@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<div class="container container-fluid">
+  <h1>BID.DR</h1>
+  <h5><%= link_to "View current auctions", root_path %></h5>
+  <hr>
+  <%= yield %>
+</div>
 
 </body>
 </html>

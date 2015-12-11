@@ -1,0 +1,14 @@
+.col-xs-8
+  h2 = @auction.title
+  p = @auction.details
+  .panel.panel-primary
+    .panel-heading
+      p Details
+    .panel-body
+      p Current price: #{number_to_currency(@auction.current_price)}
+      p Ends: #{@auction.pretty_date}
+.col-xs-4
+  h2 <small>#{@auction.display_status}</small>
+  hr
+  h2 Make a bid
+  h2 Bid History

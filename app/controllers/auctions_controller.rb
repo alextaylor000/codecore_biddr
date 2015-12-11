@@ -12,6 +12,15 @@ class AuctionsController < ApplicationController
     end
   end
 
+  def index
+    @auctions = Auction.all.order("ends_on DESC")
+  end
+
+  def show
+    @auction = Auction.find(params[:id])
+    @bid = @auction.bids.new
+  end
+
   private
   def auction_params
     params.require(:auction).permit([:title, :details, :ends_on, :reserve_price])

@@ -1,0 +1,14 @@
+h1 Current auctions
+- @auctions.each do |auction|
+  .panel.panel-default
+    .panel-heading
+      h3.pull-right <small>current price:</small> #{number_to_currency(auction.current_price)}
+      h3 = link_to auction.title, auction
+    .panel-body
+      p = auction.details
+    .panel-footer
+      .col-xs-6
+        p Ends: #{auction.pretty_date}
+      .col-xs-6
+        .badge.pull-right #{pluralize(auction.num_bids, "bid")}
+      .clearfix
