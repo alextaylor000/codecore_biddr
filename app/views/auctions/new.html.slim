@@ -1,1 +1,17 @@
 h1 New Auction
+= simple_form_for @auction do |f|
+  .form-group
+    = f.input :title
+
+  .form-group
+    = f.input :details
+
+  .form-group
+    = f.input :ends_on
+
+  .form-group
+    = f.input :reserve_price, as: :string
+
+  hr
+  .form-group
+    = f.submit "Begin Auction", class: "btn btn-primary"

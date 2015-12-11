@@ -14,8 +14,12 @@ class Auction < ActiveRecord::Base
     state :cancelled
     state :reserve_not_met
 
-    event :reserve_has_been_met do
-      transitions from: :published, to: :reserve_met
+    event :add_bid_lower_than_reserve do
+      transitions from: :published, to: :reserve_not_met
+    end
+
+    event :add_bid_higher_than_reserve do
+      transitions from: [:published, :reserve_not_met], to: :reserve_met
     end
   end
 

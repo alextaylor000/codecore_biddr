@@ -9,7 +9,7 @@
 <body>
 <div class="container container-fluid">
   <h1>BID.DR</h1>
-  <h5><%= link_to "View current auctions", root_path %></h5>
+  <h5><%= link_to "View current auctions", root_path %> &middot; <%= link_to "New auction", new_auction_path %></h5>
   <hr>
   <% if flash[:notice] %>
     <div class="alert alert-success">
