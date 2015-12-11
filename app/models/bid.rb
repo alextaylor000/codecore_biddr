@@ -12,4 +12,8 @@ class Bid < ActiveRecord::Base
       errors.add(:amount, "must be greater than the auction's current price. C'mon, live a little!!")
     end
   end
+
+  def pretty_date
+    created_at.strftime("%A, %B %e at %m:%S %p")
+  end
 end

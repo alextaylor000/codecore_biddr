@@ -2,15 +2,7 @@ class Auction < ActiveRecord::Base
   include AASM
   AUCTION_OPENING_PRICE = 1
 
-  # handy trick from http://stackoverflow.com/a/19857120/2100285
-  # returns only the persisted bids, used for calculating the
-  # current price from existing bids. it was failing before this
-  # because of the newly-instantiated @bid object for auction#show.
-  has_many :bids do
-    def persisted
-      collect{ |bid| bid if bid.persisted? }
-    end
-  end
+  has_many :bids
 
   validates :title, :details, :ends_on, :reserve_price, presence: true
   validates :title, uniqueness: true
@@ -35,6 +27,9 @@ class Auction < ActiveRecord::Base
     bids.count
   end
 
+  def bids_latest
+    bids.order("created_at DESC")
+  end
 
   def display_status
     case aasm_state
@@ -53,7 +48,7 @@ class Auction < ActiveRecord::Base
 
   # sets the current price of the auction based on the highest bid.
   def current_price
-    bids.persisted.any? ? bids.persisted.order("amount DESC").first.amount : AUCTION_OPENING_PRICE
+    bids.present? ? bids.order("amount DESC").first.amount : AUCTION_OPENING_PRICE
   end
 
 end
