@@ -5,6 +5,7 @@ class AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(auction_params)
+
     if @auction.save
       redirect_to @auction, notice: "Your auction is live!"
     else
