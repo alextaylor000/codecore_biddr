@@ -8,8 +8,13 @@
 </head>
 <body>
 <div class="container container-fluid">
+  <br />
+  <div class="pull-left">
+    <%= image_tag "auction.jpg", class: "auction-image" %>
+  </div>
   <h1>BID.DR</h1>
   <h5><%= link_to "View current auctions", root_path %> &middot; <%= link_to "New auction", new_auction_path %></h5>
+  <div class="clearfix"></div>
   <hr>
   <% if flash[:notice] %>
     <div class="alert alert-success">
