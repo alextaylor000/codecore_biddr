@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AuctionsController, type: :controller do
- # TODO: TDD for the new / create actions for the auction.
+
  describe "#new" do
    before do
      get :new
@@ -17,7 +17,7 @@ RSpec.describe AuctionsController, type: :controller do
  end
 
  describe "#create" do
-   describe "with valid params" do
+   context "with valid params" do
      def valid_auction_params
        FactoryGirl.attributes_for(:auction)
      end
@@ -34,7 +34,7 @@ RSpec.describe AuctionsController, type: :controller do
      end
    end
 
-   describe "with invalid params" do
+   context "with invalid params" do
      def invalid_auction_params
        params = FactoryGirl.attributes_for(:auction)
        params[:title] = nil
